@@ -18,7 +18,6 @@ fun trimSpace(str: String): String {
     }
 }
 
-
 fun wordCount(str: String): Int {
     var counter = 0
 
