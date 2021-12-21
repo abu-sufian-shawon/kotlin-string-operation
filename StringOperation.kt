@@ -1,6 +1,4 @@
-import java.util.Scanner
-
-fun firstCharIndex(str:String):Int{
+fun firstCharIndex(str: String): Int {
     var firstCharPos = 0
     while (str[firstCharPos] == ' ') {
         firstCharPos++
@@ -8,11 +6,20 @@ fun firstCharIndex(str:String):Int{
     return firstCharPos
 }
 
+fun lastCharIndex(str: String): Int {
+    var lastCharPosition = str.length - 1
+    while (str[lastCharPosition] == ' ') {
+        lastCharPosition--
+    }
+    return lastCharPosition
+}
+
 fun trimSpace(str: String): String {
     var newStr = ""
     val firstCharPos = firstCharIndex(str)
+    val lastCharPos = lastCharIndex(str)
     return if (str[0] == ' ') {
-        for (i in firstCharPos until str.length) {
+        for (i in firstCharPos..lastCharPos) {
             newStr += str[i].toString()
         }
         newStr
@@ -22,10 +29,13 @@ fun trimSpace(str: String): String {
 }
 
 fun wordCount(str: String): Int {
+
+    val afterTrim = trimSpace(str)
+
     var counter = 0
 
     var preSpace = false
-    for (char in str) {
+    for (char in afterTrim) {
         preSpace = if (char == ' ') {
             if (!preSpace) counter++
             true
@@ -36,17 +46,4 @@ fun wordCount(str: String): Int {
 
     counter++
     return counter
-}
-
-fun main() {
-    val scn = Scanner(System.`in`)
-    print("Put your article: ")
-    val article = scn.nextLine()
-
-    val afterTrim = trimSpace(article)
-
-    println("After count : $afterTrim")
-
-    val word = wordCount(afterTrim)
-    println("Total $word words in your article")
 }
