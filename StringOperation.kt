@@ -1,13 +1,16 @@
 import java.util.Scanner
 
-fun trimSpace(str: String): String {
-    var newStr = ""
-
+fun firstCharIndex(str:String):Int{
     var firstCharPos = 0
     while (str[firstCharPos] == ' ') {
         firstCharPos++
     }
+    return firstCharPos
+}
 
+fun trimSpace(str: String): String {
+    var newStr = ""
+    val firstCharPos = firstCharIndex(str)
     return if (str[0] == ' ') {
         for (i in firstCharPos until str.length) {
             newStr += str[i].toString()
