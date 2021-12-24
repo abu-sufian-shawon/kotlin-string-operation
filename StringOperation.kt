@@ -47,3 +47,25 @@ fun wordCount(str: String): Int {
     counter++
     return counter
 }
+
+fun titleCase(str:String):String {
+    val safia = str.toCharArray()
+
+    // without condition
+    safia[0] = safia[0].toUpperCase()
+
+    for(i in safia.indices){
+        if(safia[i] == ' '){
+            safia[i + 1] = safia[i + 1].toUpperCase()
+        }
+    }
+    return safia.concatToString()
+}
+
+fun toUpperCase(c: Char): Char {
+    return if (c in 'a'..'z') c - 32 else c
+}
+
+fun toLowerCase(c: Char): Char {
+    return if (c in 'A'..'Z') c + 32 else c
+}
